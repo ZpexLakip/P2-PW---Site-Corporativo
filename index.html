@@ -1,25 +1,80 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
+  <head>
     <meta charset="UTF-8">
     <title>Águas Claras - Manutenção de Piscinas</title>
     <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <header>
-        <div class="container">
-            <div class="logo">
-                <h1> Águas Claras </h1>
-                <p>Manutenção profissional de piscinas</p>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="#servicos">Serviços</a></li>
-                    <li><a href="#sobre">Sobre</a></li>
-                    <li><a href="#contato">Contato</a></li>
-                </ul>
-            </nav>
+  </head>
+  <body>
+    <nav>
+      <div class="nav-inner">
+        <div class="nav-logo">
+          <div class="drop"></div>
+          <h1>Águas Claras</h1>
         </div>
-    </header>
-</body>
+        <ul class="nav-links">
+          <li><a href="#servicos">Serviços</a></li>
+          <li><a href="#sobre">Sobre</a></li>
+          <li><a href="#contato">Contato</a></li>
+          <li><a href="#dicas">Dicas</a></li>
+          <li><a href="#orcamento">Orçamento</a></li>
+          <li><a href="#portfolio">Portfólio</a></li>
+        </ul>
+        <button class="nav-cta" onclick="document.getElementById('orcamento').scrollIntoView({behavior:'smooth'})">Solicitar Orçamento</button>
+      </div>
+    </nav>
+
+    <section class="hero" id="inicio">
+      <div class="hero-inner">
+        <div class="hero-text">
+          <div class="section-tag white">Teresina · PI</div>
+          <h1>Sua piscina sempre cristalina</h1>
+          <p>Manutenção profissional para piscinas residenciais e de condomínios. Tratamento químico, aspiração, bombas e filtros.</p>
+          <div class="hero-btns">
+            <button class="btn-primary" onclick="document.getElementById('orcamento').scrollIntoView({behavior:'smooth'})">Solicitar Orçamento</button>
+            <button class="btn-outline" onclick="document.getElementById('servicos').scrollIntoView({behavior:'smooth'})">Nossos Serviços</button>
+          </div>
+        </div>
+    </section>
+
+    <section class="servicos" id="servicos">
+      <div class="container">
+        <div class="section-tag">O que oferecemos</div>
+        <h2 class="section-title">Serviços completos para sua piscina</h2>
+        <p class="section-sub">Do tratamento químico à manutenção de equipamentos, cuidamos de tudo para que você aproveite sua piscina sem preocupações.</p>
+        <div class="servicos-grid">
+
+          <div class="serv-card">
+            <h3>Limpeza Avulsa</h3>
+            <p>Aspiração de fundo, limpeza de paredes, superfície e skimmers. Ideal para piscinas que precisam de atenção pontual.</p>
+            <div class="serv-preco">Atendimento avulso disponível</div>
+          </div>
+
+          <div class="serv-card">
+            <h3>Contrato Mensal</h3>
+            <p>Visitas regulares programadas com balanceamento químico, limpeza e relatórios mensais.</p>
+            <div class="serv-preco">Pacotes flexíveis · consulte condições</div>
+          </div>
+
+          <div class="serv-card">
+            <h3>Tratamento de Choque</h3>
+            <p>Aplicação de cloro e produtos desinfetantes de alta concentração para recuperação rápida da qualidade da água.</p>
+            <div class="serv-preco">Urgência em até 24h</div>
+          </div>
+
+          <div class="serv-card">
+            <h3>Casa de Máquinas</h3>
+            <p>Inspeção, limpeza e reparo de bombas, filtros, motores e sistemas de circulação.</p>
+            <div class="serv-preco">Com laudo técnico</div>
+          </div>
+
+          <div class="serv-card">
+            <h3>Balanceamento Químico</h3>
+            <p>Análise e ajuste de pH, cloro, alcalinidade e dureza da água.</p>
+            <div class="serv-preco">Kit de análise incluso</div>
+         </div>
+        </div>
+      </div>
+    </section>
+  </body>
 </html>
