@@ -1,29 +1,61 @@
-# P2-PW---Site-Corporativo | Águas Claras Manutenção de Piscinas
-Descrição: 
--Sistema web para gerenciamento de solicitações de manutenção de piscinas, com coleta estruturada de dados, integração com APIs externas e suporte à organização de atendimentos.
+# Trabalho de PW — Site Corporativo
+## Águas Claras Manutenção de Piscinas
+### Integrantes
+* Eric Santos Moura Lima
+* Carlos Benedito Maciel II
+* Guilherme Augusto
+* João Inácio
+----------------
+### Descrição do Projeto
 
-Objetivo - Criar uma plataforma web que permita:
+Sistema web desenvolvido para a disciplina de Programação Web, com foco na criação de um site corporativo para a empresa **Águas Claras Manutenção de Piscinas**.
 
-1)Apresentar a empresa e seus serviços
-1)Receber solicitações de orçamento
-3)Organizar informações dos clientes
+A aplicação permite apresentar a empresa, divulgar serviços e receber solicitações de orçamento com coleta estruturada de dados dos clientes.
 
-Funcionalidades:
+### Funcionalidades
 
-1)Página institucional com informações da empresa
-2)Listagem de serviços oferecidos
-3)Formulário de solicitação de orçamento com coleta de dados do cliente e da piscina
+* Página institucional da empresa;
+* Exibição de serviços;
+* Formulário de solicitação de orçamento;
+* Coleta de dados do cliente e da piscina;
+* Integração com API de CEP.
 
-Integrações:
-1)API de CEP para preenchimento automático de endereço
 
-Público-Alvo:
+### Estrutura do Projeto
 
-1)Proprietários de residências com piscina
-1)Condomínios
+```id="7k2m1x"
+📁 Projeto
+├── index.html
+├── style.css
+└── script.js
+```
+---
 
-Integrantes
-1)Eric Santos Moura Lima
-2)Carlos Benedito Maciel II
-3)Guilherme Augusto
-4)João Inácio
+### Tecnologias Utilizadas
+
+* HTML
+* CSS
+* JavaScript
+* API de CEP
+
+---
+
+### Como Executar
+
+1. Baixe ou clone o projeto;
+2. Abra o arquivo `index.html` no navegador.
+
+---
+
+### Público-Alvo
+
+* Proprietários de casas com piscina;
+* Condomínios.
+
+---
+
+### Conclusão
+
+O projeto cumpre o objetivo de criar um site corporativo simples, funcional e com integração externa, aplicando conceitos básicos de desenvolvimento web.
+
+
