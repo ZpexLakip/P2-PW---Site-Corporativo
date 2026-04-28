@@ -25,6 +25,7 @@ A aplicação permite apresentar a empresa, divulgar serviços e receber solicit
 
 ```id="7k2m1x"
 📁 Projeto
+├──📁Img
 ├── index.html
 ├── style.css
 └── script.js
