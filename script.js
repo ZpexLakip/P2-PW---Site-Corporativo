@@ -1,4 +1,24 @@
-function enviarForm(){
+async function buscarCep(){
+    const cep = document.getElementById("f-cep").value
+    const viacep = 'https://viacep.com.br/ws/'+ cep + '/json/'
+    
+    try{ 
+        const response = await fetch(viacep)
+        if (response.ok){
+        let data = await response.json()
+            document.getElementById("cep-erro").textContent = ''
+            document.getElementById("f-rua").value = data.logradouro
+            document.getElementById("f-bairro").value = data.bairro
+            document.getElementById("f-cidade").value = data.localidade
+        } 
+    } catch(error){
+    document.getElementById("cep-erro").textContent = 'CEP não encontrado. Verifique e tente novamente.'
+    alert(error)
+    return
+    }
+}
+
+async function enviarForm(){
     let orcamentos = JSON.parse(localStorage.getItem("orcamentos")) || [];
     const formOrcamento = document.getElementById("form-conteudo")
 
@@ -22,8 +42,8 @@ function enviarForm(){
     orcamentos.push(orcamento)
     localStorage.setItem("orcamentos", JSON.stringify(orcamentos))
 
-    console.log("Orcamento Salvo: ", orcamento);
-    console.log("Todos os Orcamentos: ", orcamentos);
+    console.log("Orçamento Salvo: ", orcamento);
+    console.log("Todos os Orçamentos: ", orcamentos);
 
-    alert("Foi")
+    alert("Orçamento Concluído")
 }
