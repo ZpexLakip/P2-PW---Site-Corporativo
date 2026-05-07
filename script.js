@@ -45,5 +45,22 @@ async function enviarForm(){
     console.log("Orçamento Salvo: ", orcamento);
     console.log("Todos os Orçamentos: ", orcamentos);
 
+    const tabela = document.getElementById("leads-body")
+    const novaLinha = tabela.insertRow(-1);
+    novaLinha.insertCell(0).textContent = orcamento.nome
+    novaLinha.insertCell(1).textContent = orcamento.telefone
+    novaLinha.insertCell(2).textContent = orcamento.rua
+    novaLinha.insertCell(3).textContent = orcamento.volume
+    novaLinha.insertCell(4).textContent = orcamento.servico
+    novaLinha.insertCell(5).textContent = orcamento.descricao
+    novaLinha.insertCell(6).textContent = Date().toLocaleDateString();
+    let cont = 0
+    
     alert("Orçamento Concluído")
+}
+
+async function limparLeads(){
+    const tabela = document.getElementById("leads-body")
+    tabela.innerHTML = ""
+    localStorage.removeItem("orcamentos")
 }
