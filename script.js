@@ -53,8 +53,7 @@ async function enviarForm(){
     novaLinha.insertCell(3).textContent = orcamento.volume
     novaLinha.insertCell(4).textContent = orcamento.servico
     novaLinha.insertCell(5).textContent = orcamento.descricao
-    novaLinha.insertCell(6).textContent = Date().toLocaleDateString();
-    let cont = 0
+    novaLinha.insertCell(6).textContent = new Date().toDateString();
     
     alert("Orçamento Concluído")
 }
