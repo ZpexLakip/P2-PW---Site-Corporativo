@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8">
+    <title>Contato - Águas Claras</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <nav>
+      <div class="nav-inner">
+        <div class="nav-logo">
+          <div class="drop"></div>
+          <h1>Águas Claras</h1>
+        </div>
+        <ul class="nav-links">
+          <li><a href="index.html">Página Inicial</a></li>
+          <li><a href="servicos.html">Serviços</a></li>
+          <li><a href="sobre.html">Sobre</a></li>
+          <li><a href="contato.html">Contato</a></li>
+        </ul>
+        <button class="nav-cta" onclick="window.location.href='contato.html'">Solicitar Orçamento</button>
+      </div>
+    </nav>
+
+    <section class="page-header">
+      <div class="container">
+        <h1>Solicite seu Orçamento</h1>
+        <p>Resposta garantida em até 24 horas</p>
+      </div>
+    </section>
+
+    <section class="orcamento" id="orcamento">
+      <div class="container">
+        <div class="orc-inner">
+          <div class="orc-info">
+            <h2>Solicite seu orçamento gratuito</h2>
+            <p>Preencha o formulário e nossa equipe entrará em contato em até 24 horas para agendar uma visita técnica sem compromisso.</p>
+            <div class="orc-beneficio"><div class="orc-check">✓</div>Visita técnica gratuita</div>
+            <div class="orc-beneficio"><div class="orc-check">✓</div>Orçamento sem letras miúdas</div>
+            <div class="orc-beneficio"><div class="orc-check">✓</div>Resposta em até 24 horas</div>
+            <div class="orc-beneficio"><div class="orc-check">✓</div>Profissionais certificados</div>
+          </div>
+          <div class="form-card">
+            <div id="form-conteudo">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="f-nome">Nome completo *</label>
+                  <input type="text" id="f-nome" placeholder="Seu nome">
+                </div>
+                <div class="form-group">
+                  <label for= "f-tel">Telefone *</label>
+                  <input type="tel" id="f-tel" placeholder="(99) 9 9999-9999">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="f-email">E-mail</label>
+                <input type="email" id="f-email" placeholder="seu@email.com">
+              </div>
+              <div class="form-group">
+                <label for="f-cep">CEP *</label>
+                <div class="cep-row">
+                  <input type="text" id="f-cep" placeholder="64000-000" maxlength="9">
+                  <button class="btn-cep" onclick="buscarCep()">Buscar CEP</button>
+                </div>
+                <div class="alert-box alert-error" id="cep-erro"></div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="f-rua">Rua</label>
+                  <input type="text" id="f-rua" placeholder="Preenchido pelo CEP">
+                </div>
+                <div class="form-group">
+                  <label for="f-bairro">Bairro</label>
+                  <input type="text" id="f-bairro" placeholder="Preenchido pelo CEP">
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="f-cidade">Cidade</label>
+                  <input type="text" id="f-cidade" placeholder="Preenchido pelo CEP">
+                </div>
+                <div class="form-group">
+                  <label for="f-num">Número</label>
+                  <input type="text" id="f-num" placeholder="Nº">
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="f-volume">Volume da piscina (m³)</label>
+                  <input type="number" id="f-volume" placeholder="Ex: 36">
+                </div>
+                <div class="form-group">
+                  <label for="f-tipo">Tipo de cliente</label>
+                  <select id="f-tipo">
+                    <option value="">Selecione</option>
+                    <option>Residência</option>
+                    <option>Condomínio</option>
+                    <option>Hotel / Pousada</option>
+                    <option>Clube / Academia</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="f-servico">Serviço desejado *</label>
+                <select id="f-servico">
+                  <option value="">Selecione</option>
+                  <option>Limpeza Avulsa</option>
+                  <option>Contrato Mensal</option>
+                  <option>Tratamento de Choque</option>
+                  <option>Manutenção de Casa de Máquinas</option>
+                  <option>Balanceamento Químico</option>
+                  <option>Avaliação Geral</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="f-msg">Descreva o problema ou necessidade</label>
+                <textarea id="f-msg" rows="3" placeholder="Ex: água verde, bomba com barulho, pH alto..."></textarea>
+              </div>
+              <div class="alert-box alert-error" id="form-erro" style="display:none;">Por favor, preencha todos os campos obrigatórios.</div>
+              <button class="btn-submit" onclick="enviarForm()">Enviar Solicitação</button>
+            </div>
+            <div class="form-success" id="form-sucesso" style="display:none;">
+              <div class="check-big">✓</div>
+              <h3>Solicitação enviada com sucesso!</h3>
+              <p>Recebemos seus dados e entraremos em contato em até 24 horas.</p>
+              <button class="btn-submit mt" onclick="novaReq()">Nova solicitação</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="leads-section" id="leads">
+      <div class="container">
+        <div class="leads-header">
+          <div>
+            <h2 class="section-title leads-title">Solicitações Recebidas</h2>
+            <p class="leads-subtitle">Painel interno — Águas Claras</p>
+          </div>
+          <button class="btn-limpar" onclick="limparLeads()">Limpar lista</button>
+        </div>
+        <div class="table-wrapper">
+          <table class="leads-table">
+            <thead>
+              <tr>
+                <th>Nome</th>
+                <th>Telefone</th>
+                <th>Rua</th>
+                <th>Volume</th>
+                <th>Serviço</th>
+                <th>Descrição</th>
+                <th>Data</th>
+              </tr>
+            </thead>
+            <tbody id="leads-body">
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-col">
+            <div class="nav-logo">
+              <div class="drop"></div>
+              <h3>Águas Claras</h3>
+            </div>
+            <p>Manutenção profissional de piscinas em Teresina.</p>
+          </div>
+          <div class="footer-col">
+            <h4>Navegação</h4>
+            <ul>
+              <li><a href="index.html">Página Inicial</a></li>
+              <li><a href="servicos.html">Serviços</a></li>
+              <li><a href="sobre.html">Sobre Nós</a></li>
+              <li><a href="contato.html">Contato</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Contato</h4>
+            <p>Teresina · PI</p>
+            <p>Resposta garantida em 24 horas</p>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2024 Águas Claras. Todos os direitos reservados.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

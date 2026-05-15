@@ -20,61 +20,132 @@ async function buscarCep(){
 
 async function enviarForm(){
     let orcamentos = JSON.parse(localStorage.getItem("orcamentos")) || [];
-    const formOrcamento = document.getElementById("form-conteudo")
+    
+    // Validação de campos obrigatórios
+    const nome = document.getElementById("f-nome").value.trim();
+    const tel = document.getElementById("f-tel").value.trim();
+    const cep = document.getElementById("f-cep").value.trim();
+    const servico = document.getElementById("f-servico").value.trim();
+    
+    if (!nome || !tel || !cep || !servico) {
+        const erroElement = document.getElementById("form-erro");
+        if (erroElement) {
+            erroElement.style.display = 'block';
+        }
+        return;
+    }
 
-    event.preventDefault()
+    event.preventDefault();
         
-    const orcamento ={
-        nome: document.getElementById("f-nome").value,
-        telefone: document.getElementById("f-tel").value,
+    const orcamento = {
+        nome: nome,
+        telefone: tel,
         email: document.getElementById("f-email").value,
-        cep: document.getElementById("f-cep").value,
+        cep: cep,
         rua: document.getElementById("f-rua").value,
         bairro: document.getElementById("f-bairro").value,
         cidade: document.getElementById("f-cidade").value,
         numero: document.getElementById("f-num").value,
         volume: document.getElementById("f-volume").value,
         tipo: document.getElementById("f-tipo").value,
-        servico: document.getElementById("f-servico").value,
+        servico: servico,
         descricao: document.getElementById("f-msg").value
-    }
+    };
 
-    orcamentos.push(orcamento)
-    localStorage.setItem("orcamentos", JSON.stringify(orcamentos))
+    orcamentos.push(orcamento);
+    localStorage.setItem("orcamentos", JSON.stringify(orcamentos));
 
     console.log("Orçamento Salvo: ", orcamento);
     console.log("Todos os Orçamentos: ", orcamentos);
 
-    const tabela = document.getElementById("leads-body")
-    const novaLinha = tabela.insertRow(-1);
-    novaLinha.insertCell(0).textContent = orcamento.nome
-    novaLinha.insertCell(1).textContent = orcamento.telefone
-    novaLinha.insertCell(2).textContent = orcamento.rua
-    novaLinha.insertCell(3).textContent = orcamento.volume
-    novaLinha.insertCell(4).textContent = orcamento.servico
-    novaLinha.insertCell(5).textContent = orcamento.descricao
-    novaLinha.insertCell(6).textContent = new Date().toDateString();
-    
-    alert("Orçamento Concluído")
+    // Adicionar à tabela
+    const tabela = document.getElementById("leads-body");
+    if (tabela) {
+        const novaLinha = tabela.insertRow(-1);
+        novaLinha.insertCell(0).textContent = orcamento.nome;
+        novaLinha.insertCell(1).textContent = orcamento.telefone;
+        novaLinha.insertCell(2).textContent = orcamento.rua;
+        novaLinha.insertCell(3).textContent = orcamento.volume;
+        novaLinha.insertCell(4).textContent = orcamento.servico;
+        novaLinha.insertCell(5).textContent = orcamento.descricao;
+        novaLinha.insertCell(6).textContent = new Date().toDateString();
+    }
+
+    // Mostrar mensagem de sucesso
+    const formConteudo = document.getElementById("form-conteudo");
+    const formSucesso = document.getElementById("form-sucesso");
+    if (formConteudo && formSucesso) {
+        formConteudo.style.display = 'none';
+        formSucesso.style.display = 'block';
+    }
 }
 function validarEmail(email) {
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return regex.test(email);
 }
 
-const emailInput = document.getElementById("f-email");
-
-emailInput.addEventListener("blur", function () {
-
-    const email = emailInput.value;
-
-    if (email !== "" && !validarEmail(email)) {
-        alert("Digite um email válido!");
+// Validação de email com listener
+document.addEventListener("DOMContentLoaded", function() {
+    const emailInput = document.getElementById("f-email");
+    
+    if (emailInput) {
+        emailInput.addEventListener("blur", function () {
+            const email = emailInput.value;
+            if (email !== "" && !validarEmail(email)) {
+                alert("Digite um email válido!");
+            }
+        });
     }
-
+    
+    // Carregar leads salvos
+    carregarLeads();
 });
+
+function carregarLeads() {
+    const tabela = document.getElementById("leads-body");
+    if (!tabela) return;
+    
+    const orcamentos = JSON.parse(localStorage.getItem("orcamentos")) || [];
+    tabela.innerHTML = "";
+    
+    orcamentos.forEach(orcamento => {
+        const novaLinha = tabela.insertRow(-1);
+        novaLinha.insertCell(0).textContent = orcamento.nome;
+        novaLinha.insertCell(1).textContent = orcamento.telefone;
+        novaLinha.insertCell(2).textContent = orcamento.rua;
+        novaLinha.insertCell(3).textContent = orcamento.volume;
+        novaLinha.insertCell(4).textContent = orcamento.servico;
+        novaLinha.insertCell(5).textContent = orcamento.descricao;
+        novaLinha.insertCell(6).textContent = new Date(orcamento.data || Date.now()).toDateString();
+    });
+}
 async function limparLeads(){
     const tabela = document.getElementById("leads-body")
     tabela.innerHTML = ""
     localStorage.removeItem("orcamentos")
+}
+
+function novaReq() {
+    // Resetar formulário
+    document.getElementById("f-nome").value = "";
+    document.getElementById("f-tel").value = "";
+    document.getElementById("f-email").value = "";
+    document.getElementById("f-cep").value = "";
+    document.getElementById("f-rua").value = "";
+    document.getElementById("f-bairro").value = "";
+    document.getElementById("f-cidade").value = "";
+    document.getElementById("f-num").value = "";
+    document.getElementById("f-volume").value = "";
+    document.getElementById("f-tipo").value = "";
+    document.getElementById("f-servico").value = "";
+    document.getElementById("f-msg").value = "";
+    document.getElementById("form-erro").style.display = 'none';
+    
+    // Mostrar formulário novamente
+    const formConteudo = document.getElementById("form-conteudo");
+    const formSucesso = document.getElementById("form-sucesso");
+    if (formConteudo && formSucesso) {
+        formConteudo.style.display = 'block';
+        formSucesso.style.display = 'none';
+    }
 }
