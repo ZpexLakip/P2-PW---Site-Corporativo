@@ -38,7 +38,7 @@ async function enviarForm(){
         servico: document.getElementById("f-servico").value,
         descricao: document.getElementById("f-msg").value
     }
-        
+
     orcamentos.push(orcamento)
     localStorage.setItem("orcamentos", JSON.stringify(orcamentos))
 
@@ -57,7 +57,22 @@ async function enviarForm(){
     
     alert("Orçamento Concluído")
 }
+function validarEmail(email) {
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regex.test(email);
+}
 
+const emailInput = document.getElementById("f-email");
+
+emailInput.addEventListener("blur", function () {
+
+    const email = emailInput.value;
+
+    if (email !== "" && !validarEmail(email)) {
+        alert("Digite um email válido!");
+    }
+
+});
 async function limparLeads(){
     const tabela = document.getElementById("leads-body")
     tabela.innerHTML = ""
