@@ -149,3 +149,28 @@ function novaReq() {
         formSucesso.style.display = 'none';
     }
 }
+
+/* --- INÍCIO DA VALIDAÇÃO DE TELEFONE --- */
+const campoTelefone = document.getElementById('f-tel');
+
+if (campoTelefone) {
+    campoTelefone.maxLength = 15; // Limita o tamanho para (99) 99999-9999
+    
+    campoTelefone.addEventListener('input', function(event) {
+        let valor = event.target.value.replace(/\D/g, ""); // Tira tudo que não for número
+        let formatado = "";
+        
+        if (valor.length > 0) {
+            formatado = "(" + valor.substring(0, 2);
+        }
+        if (valor.length > 2) {
+            formatado += ") " + valor.substring(2, 7);
+        }
+        if (valor.length > 7) {
+            formatado += "-" + valor.substring(7, 11);
+        }
+        
+        event.target.value = formatado;
+    });
+}
+/* --- FIM DA VALIDAÇÃO DE TELEFONE --- */
